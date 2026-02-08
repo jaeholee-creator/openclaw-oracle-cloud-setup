@@ -1,0 +1,12 @@
+[Unit]
+Description=Chromium Headless Browser for OpenClaw
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/chromium-browser --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --remote-debugging-port=18801 --remote-debugging-address=127.0.0.1 about:blank
+Restart=always
+RestartSec=5
+Environment=HOME=/home/ubuntu
+
+[Install]
+WantedBy=default.target

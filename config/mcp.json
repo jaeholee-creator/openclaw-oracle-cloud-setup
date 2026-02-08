@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "/home/ubuntu/.nvm/versions/node/v22.22.0/bin/npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/home/ubuntu"]
+    },
+    "memory": {
+      "command": "/home/ubuntu/.nvm/versions/node/v22.22.0/bin/npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
+    },
+    "sequential-thinking": {
+      "command": "/home/ubuntu/.nvm/versions/node/v22.22.0/bin/npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+    }
+  },
+  "imports": []
+}
