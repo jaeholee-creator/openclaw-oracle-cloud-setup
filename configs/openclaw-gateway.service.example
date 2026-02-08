@@ -1,0 +1,23 @@
+[Unit]
+Description=OpenClaw Gateway
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart="/home/ubuntu/.nvm/versions/node/v22.22.0/bin/node" "/home/ubuntu/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/dist/index.js" gateway --port 18789 --bind lan
+Restart=always
+RestartSec=5
+KillMode=process
+Environment=HOME=/home/ubuntu
+Environment="PATH=/home/ubuntu/.nvm/current/bin:/home/ubuntu/.local/bin:/home/ubuntu/.npm-global/bin:/home/ubuntu/bin:/usr/local/bin:/usr/bin:/bin"
+Environment=OPENCLAW_GATEWAY_PORT=18789
+Environment=OPENCLAW_GATEWAY_TOKEN=YOUR_GATEWAY_TOKEN
+Environment=OPENCLAW_GATEWAY_BIND=0.0.0.0
+Environment=OPENCLAW_CONFIG_PATH=/home/ubuntu/.openclaw/config.toml
+Environment="OPENCLAW_SYSTEMD_UNIT=openclaw-gateway.service"
+Environment=OPENCLAW_SERVICE_MARKER=openclaw
+Environment=OPENCLAW_SERVICE_KIND=gateway
+Environment=GROQ_API_KEY=YOUR_GROQ_API_KEY
+
+[Install]
+WantedBy=default.target

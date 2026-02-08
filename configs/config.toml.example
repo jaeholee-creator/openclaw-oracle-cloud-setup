@@ -1,0 +1,73 @@
+{
+  "models": {
+    "mode": "merge"
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "groq/meta-llama/llama-4-scout-17b-16e-instruct"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      },
+      "compaction": {
+        "mode": "safeguard",
+        "reserveTokensFloor": 0
+      },
+      "sandbox": {
+        "mode": "off"
+      }
+    }
+  },
+  "tools": {
+    "profile": "full",
+    "allow": ["*"],
+    "deny": [],
+    "elevated": {
+      "enabled": true,
+      "allowFrom": {
+        "telegram": ["*"]
+      }
+    }
+  },
+  "commands": {
+    "native": true,
+    "nativeSkills": true,
+    "bash": true,
+    "config": true,
+    "restart": true,
+    "useAccessGroups": false
+  },
+  "channels": {
+    "telegram": {
+      "dmPolicy": "open",
+      "botToken": "YOUR_TELEGRAM_BOT_TOKEN",
+      "groupPolicy": "allowlist",
+      "streamMode": "partial",
+      "allowFrom": ["*"]
+    }
+  },
+  "gateway": {
+    "mode": "local",
+    "bind": "tailnet",
+    "controlUi": {
+      "allowedOrigins": [
+        "https://YOUR_TAILSCALE_IP",
+        "http://YOUR_TAILSCALE_IP",
+        "http://localhost:18789"
+      ]
+    },
+    "trustedProxies": ["127.0.0.1", "::1"]
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "plugins": {
+    "entries": {
+      "telegram": {
+        "enabled": true
+      }
+    }
+  }
+}
